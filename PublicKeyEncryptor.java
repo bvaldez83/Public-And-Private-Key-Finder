@@ -5,16 +5,16 @@ import java.util.Scanner;
 class PublicKeyEncryptor {
 	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) {
-		/*System.out.print("Enter prime num1: ");
+		System.out.print("Enter prime num1: ");
 		int num1 = input.nextInt();
 		num1 = primeEnforcer(num1);
 		System.out.print("Enter prime num2: ");
 		int num2 = input.nextInt();
 		num2 = primeEnforcer(num2);
 		int primeprod = num1 * num2;
-		int function = ((num1 - 1) * (num2 - 1));*/
-		listPrimeFactors(66);
-		//System.out.print(num1 + " * " + num2 + " = " + primeprod);
+		int function = ((num1 - 1) * (num2 - 1));
+		System.out.print("Function = (prime1 - 1) * (prime2 - 1)\n"+ "Function = ("+num1 +" - 1)"+ " * (" + num2 + " - 1) = " + function);
+		listPrimeFactors(function);
 	}
 	
 	//Method to check if a num is Prime. 
@@ -56,11 +56,10 @@ class PublicKeyEncryptor {
 	public static void listCoprime(ArrayList<Integer> primeFactorList, int num) {
 		boolean isCoprime  = true;
 		for (int i = 1; i < (num - 1); i++) {
-			if ((i % primeFactorList) == 0) {
+			//if ((i % primeFactorList) == 0) {
 				
-			}
+			//}
 		}
-		//System.out.print(primeFactorList);
 	}
 	
 }
