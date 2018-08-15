@@ -13,7 +13,8 @@ class PublicKeyEncryptor {
 		num2 = primeEnforcer(num2);
 		int primeprod = num1 * num2;
 		int function = ((num1 - 1) * (num2 - 1));
-		System.out.print("Function = (prime1 - 1) * (prime2 - 1)\n"+ "Function = ("+num1 +" - 1)"+ " * (" + num2 + " - 1) = " + function);
+		System.out.print("Function = (prime1 - 1) * (prime2 - 1)\n"+ "Function = ("
+				 +num1 +" - 1)"+ " * (" + num2 + " - 1) = " + function);
 		listPrimeFactors(function);
 	}
 	
@@ -49,17 +50,30 @@ class PublicKeyEncryptor {
 					primeFactorList.add(i);					
 				}
 			}
+			System.out.print("\nThe Prime Factors of "+num+" is: "+primeFactorList);
 			listCoprime(primeFactorList, num);
 		}
 	
 	//Method to list coprime numbers that are a factor of the function
 	public static void listCoprime(ArrayList<Integer> primeFactorList, int num) {
-		boolean isCoprime  = true;
-		for (int i = 1; i < (num - 1); i++) {
-			//if ((i % primeFactorList) == 0) {
-				
-			//}
+		boolean isCoprime  = false;
+		System.out.print("\nCoprimes are: ");
+		for (int i = 1; i < num; i++) {
+			if (isMultiple(i, primeFactorList) == false) {
+				isCoprime = true;
+				System.out.print(i + ", ");
+			}
 		}
 	}
 	
+	//Method to check if a number is a multiple of another
+	public static boolean isMultiple(int num1, ArrayList<Integer> factorList) {
+		boolean isMultiple = false;
+		for (int i = 0; i < factorList.size(); i++) {
+			if (num1 % factorList.get(i) == 0) {
+				isMultiple = true;
+			}
+		}
+		return isMultiple;
+	}
 }
