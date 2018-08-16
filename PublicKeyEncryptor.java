@@ -2,14 +2,14 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class PublicKeyEncryptor {
+class PublicAndPrivateKeyFinder {
 	//Declarations
 	static ArrayList<Integer> coprimeFactorList = new ArrayList<Integer>();
 	static ArrayList<Integer> primeFactorList = new ArrayList<Integer>();
 	static Scanner input = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		int num1, num2, primeprod, function, coprime;
+		int num1, num2, primeprod, function, coprime, privateExponent;
 		System.out.print("Enter prime num1: ");
 		num1 = input.nextInt();
 		num1 = primeEnforcer(num1);
@@ -18,16 +18,25 @@ class PublicKeyEncryptor {
 		num2 = primeEnforcer(num2);
 		primeprod = num1 * num2;
 		function = ((num1 - 1) * (num2 - 1));
-		//System.out.print("Function = (prime1 - 1) * (prime2 - 1)\n");
-		System.out.print("Function = ("+num1 +" - 1)"+ " * (" + num2 + " - 1) = " + function);
 		listPrimeFactors(function);
 		System.out.print(coprimeFactorList);
 		System.out.print("\nSelect a Coprime from the list: ");
 		coprime = input.nextInt();
 		coprime = checkCoprimeList(coprime);
 		System.out.print("Public key ("+ coprime +", "+ primeprod + ")");
-		System.out.print("\nPrivate Decrypt Exponent = ("+ coprime +")^(-1) mod "+ function);
-		System.out.print("\n(Private Decrypt Exponent * "+ coprime +") mod "+ function + " = 1");
+		privateExponent = findPrivateDecryptExponent(coprime, function);
+		System.out.print("\nPrivate key ("+ privateExponent +", "+ primeprod + ")");
+	}
+	
+	//Method to find the Private Decrypt Exponent
+	public static int findPrivateDecryptExponent(int coprime, int function) {
+		int answer = 0;
+		for (int i = 0; i < coprimeFactorList.size(); i++) {
+			if ((coprimeFactorList.get(i)*coprime) % function == 1) {
+				answer = coprimeFactorList.get(i);
+			}
+		}
+		return answer;	
 	}
 	
 	//Method to check if a num is Prime. 
@@ -73,14 +82,13 @@ class PublicKeyEncryptor {
 					primeFactorList.add(i);					
 				}
 			}
-			System.out.print("\nThe Prime Factors of "+num+": "+primeFactorList);
 			listCoprime(primeFactorList, num);
 		}
 	
 	//Method to list coprime numbers that are a factor of the function
 	public static ArrayList<Integer> listCoprime(ArrayList<Integer> primeFactorList, int num) {
 		boolean isCoprime  = false;
-		System.out.print("\nCoprimes are: ");
+		System.out.print("Coprimes are: ");
 		for (int i = 1; i < num; i++) {
 			if (isMultiple(i, primeFactorList) == false) {
 				if (isCoprime = true && primeChecker(i) == true) {
