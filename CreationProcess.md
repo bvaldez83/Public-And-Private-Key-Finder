@@ -1,6 +1,7 @@
 # Purpose of File
 This file provides an explanation of my thought process as I created this application
 
+# Thoughts
 ### Update Aug 12
 So far the program can complete steps 1 through 3 on the handout but I'm encountering a little difficulty with step 4. 
 
