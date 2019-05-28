@@ -15,4 +15,5 @@ I'm so close to completing this project I can just taste it! All I need to addre
 This project is now completed! I'm very proud of it! 
 
 # Future Work
+
 For the future I can consider implementing a GUI for this text input skeleton. 
