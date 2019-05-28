@@ -12,4 +12,7 @@ I was able to complete step 4 by following the "How to Calculate a Coprime" inst
 I'm so close to completing this project I can just taste it! All I need to address now is steps 6-7 of the handout. I considered calculating the Private Decrypt Exponent by using the formula but that didn't get me anywhere. Tomorrow I'll try checking it against the coprimeFactorList and see what happens then! Until Then! 
 
 ### Update Aug 16
-This project is now completed! I'm very proud of it! For the future I can consider implementing a GUI for this text input skeleton. 
+This project is now completed! I'm very proud of it! 
+
+# Future Work
+For the future I can consider implementing a GUI for this text input skeleton. 
